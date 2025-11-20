@@ -215,7 +215,6 @@ class polyAnalyser():
         
         return unknotTime
     
-
     def getAverageMonomerDistance(self):
         # Get the final timestep
         final_t = self.simLength / 10
@@ -255,9 +254,12 @@ class polyAnalyser():
             print("No monomers found at final timestep")
 
 
-    def getVassilievInvariants(self):
+    def getVassilievInvariants(self, unknottingTime):
+        vassilievs=[]
+        #input is mpcd time, so need to convert to timestep to access data
+        unknottingTimestep=int(unknottingTime*10)
         #need to get a way to look some timesteps around the unknotting time
-        for i in range(1,2):#self.simLength):
+        for i in range((unknottingTimestep-400),(unknottingTimestep+400)):#self.simLength):
         #for i in range(1, 10):
             t=i/10
             #print(t)
@@ -271,6 +273,8 @@ class polyAnalyser():
             coordinates = np.column_stack((monoX, monoY, monoZ))
 
             vassiliev=vas(coordinates, 1)
+            vassilievs.append(vassiliev)
+            #print(vassiliev, 'vassiliev')
 
-            print(vassiliev, 'vassiliev')
-
+        print('finished getting the vassilievs')
+        return vassilievs

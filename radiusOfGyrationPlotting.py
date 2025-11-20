@@ -6,7 +6,7 @@ import matplotlib.pyplot as plt
 plt.style.use('shendrukGroupStyle')
 import shendrukGroupFormat as ed
 
-directory = "/Users/johnwhitfield/Desktop/sims/n100/output"
+directory = "/Users/johnwhitfield/Desktop/localsims/n100/output"
 
 radiusOfGyrations=[]
 
